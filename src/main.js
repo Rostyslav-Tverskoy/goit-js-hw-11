@@ -22,19 +22,16 @@ function handleSubmit(event) {
                 message: "Sorry, there are no images matching your search query. Please try again!",
                 position: "topRight",
             })
-            hideLoader();
             return;
         }
-        createGallery(response.data.hits);
-        hideLoader();
-        
+        createGallery(response.data.hits);        
     }
         )
         .catch((error) => iziToast.error({
             message:"Что то пошло не так",
             position: "topRight"
         }))
-    
+       .finally(() => hideLoader())
 }
 
 
